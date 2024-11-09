@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2020 - TODAY, Marcel Savegnago - Escodoo
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <data>
+        <template id="report_maintenance_portal_request_document">
+            <t t-call="web.internal_layout">
+                <t
+                    t-set="doc"
+                    t-value="doc.with_context(lang=doc.user_id.partner_id.lang)"
+                />
+                <div class="page">
+                    <div class="oe_structure" />
+                        <h4><strong>Orden de trabajo N°: <span t-field="doc.code"/></strong></h4>
+                        <div class="border border-dark rounded p-2">
+                            <div t-if="doc.partner_id">
+                                <strong>Solicitante: </strong>
+                                <span t-field="doc.partner_id"/>
+                            </div>
+                            <div t-if="not doc.partner_id">
+                                <strong>Solicitante: </strong>
+                                <span t-field="doc.employee_id"/>
+                            </div>
+                            <div>
+                                <strong>Equipamiento: </strong>
+                                <span t-field="doc.equipment_id"/>
+                            </div>
+                            <div>
+                                <strong>Sector: </strong>
+                                <span t-field="doc.equipment_id.location"/>
+                            </div>
+                            <div>
+                                <strong>Fecha prevista: </strong>
+                                <span t-field="doc.schedule_date"/>
+                            </div>
+                            <div>
+                                <strong>Equipo responsable: </strong>
+                                <span t-field="doc.maintenance_team_id"/>
+                            </div>
+                            <div>
+                                <strong>Responsable: </strong>
+                                <span t-field="doc.user_id"/>
+                            </div>
+                            <div>
+                                <strong>Tipo: </strong>
+                                <span t-field="doc.maintenance_type"/>
+                            </div>
+                            <div>
+                                <strong>Prioridad: </strong>
+                                <span t-field="doc.maintenance_priority"/>
+                            </div>
+                        </div>
+                        <div class="border border-dark rounded p-2 mt-2">
+                            <strong>Instrucciones: </strong>
+                            <p t-field="doc.note"/>
+                        </div>
+                        <div class="border border-dark rounded p-2 mt-2">
+                            <strong>Descripcion: </strong>
+                            <p t-field="doc.description"/>
+                        </div>
+                        <div class="border border-dark rounded p-2 mt-2" style="height: 150px">
+                            <strong>Novedades y tareas fuera de programa:</strong>
+                        </div>
+                        <div class="table-responsive mt-3 p-1">
+                        <span class="border border-secondary p-1"><strong>Listado de materiales:</strong></span>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr class="active">
+                                        <th>Producto</th>
+                                        <th>Cantidad</th>
+                                        <th>Unidad de medida</th>
+                                    </tr>
+                                </thead>
+                                <t t-foreach="doc.product_structure_ids" t-as="prod">
+                                    <tr>
+                                        <td>
+                                            <t t-esc="prod.product_id.name" /> 
+                                        </td>
+                                        <td>
+                                            <t t-esc="prod.quantity" /> 
+                                        </td>
+                                        <td>
+                                            <t t-esc="prod.unit_of_measurement.name" /> 
+                                        </td>
+                                    </tr>
+                                </t>
+                            </table>
+                        </div>
+                        <div class="table-responsive mt-3 p-1">
+                            <span class="border border-secondary p-1"><strong>Mano de obra:</strong></span>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr class="active">
+                                        <th>Fecha</th>
+                                        <th>Usuario informante</th>
+                                        <th>Proyecto</th>
+                                        <th>Tarea</th>
+                                        <th>Descripcion</th>
+                                        <th>Horas</th>
+                                    </tr>
+                                </thead>
+                                <t t-foreach="request.env['account.analytic.line'].search([('maintenance_request_id','=', doc.id)])" t-as="time">
+                                    <tr>
+                                        <td>
+                                            <t t-esc="time.date" /> 
+                                        </td>
+                                        <td>
+                                            <t t-esc="time.acting_user_id.name" /> 
+                                        </td>
+                                        <td>
+                                            <t t-esc="time.project_id.name" /> 
+                                        </td>
+                                        <td>
+                                            <t t-esc="time.task_id.name" /> 
+                                        </td>
+                                        <td>
+                                            <t t-esc="time.name" /> 
+                                        </td>
+                                        <td>
+                                            <t t-esc="time.unit_amount" /> 
+                                        </td>
+                                    </tr>
+                                </t>
+                            </table>
+                        </div>
+                        <div class="p-2 mt-2">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                      <span>Fecha de realizacion 1: ___/___/___</span>  
+                                    </td>
+                                    <td>
+                                      <span>Hora Inicio: ___:___Hs</span>  
+                                    </td>
+                                    <td>
+                                      <span>Hora Final: ___:___Hs</span>  
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                      <span>Fecha de realizacion 2: ___/___/___</span>  
+                                    </td>
+                                    <td>
+                                      <span>Hora Inicio: ___:___Hs</span>  
+                                    </td>
+                                    <td>
+                                      <span>Hora Final: ___:___Hs</span>  
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="container text-center">
+                            <div class="row">
+                                <div class="col-6">
+                                    <span>_____________________</span>
+                                    <br/>
+                                    <span>Firma</span>
+                                    <br/>
+                                    <span>Jefe de Mantenimiento</span>
+                                </div>
+                                <div class="col-6">
+                                    <span>_____________________</span>
+                                    <br/>
+                                    <span>Firma</span>
+                                    <br/>
+                                    <span>Jefe Seccion de Produccion</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <span>F09-20</span>
+                        </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="report_maintenance_portal_request">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t
+                        t-call="maintenance_portal.report_maintenance_portal_request_document"
+                        t-lang="doc.user_id.partner_id.lang"
+                    />
+                </t>
+            </t>
+        </template>
+
+        <record id="action_report_maintenance_portal_request" model="ir.actions.report">
+            <field name="name">Peticion de mantenimiento</field>
+            <field name="model">maintenance.request</field>
+            <field name="report_type">qweb-pdf</field>
+            <field
+                name="report_name"
+            >maintenance_portal.report_maintenance_portal_request</field>
+            <field
+                name="report_file"
+            >maintenance_portal.report_maintenance_portal_request</field>
+            <field
+                name="print_report_name"
+            >'Maintenance Request - %s' % (object.name)</field>
+            <field
+                name="binding_model_id"
+                ref="maintenance.model_maintenance_request"
+            />
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

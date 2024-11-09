@@ -1,0 +1,155 @@
+<odoo>
+  <data>
+
+    <record id="view_maintenance_request_form_inherit" model="ir.ui.view">
+      <field name="name">maintenance.request.inherit</field>
+      <field name="model">maintenance.request</field>
+      <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"></field>
+      <field name="arch" type="xml">
+        <field name="priority" position="attributes">
+        <attribute name="invisible">1</attribute>
+        </field>
+        <field name="email_cc" position="attributes">
+        <attribute name="invisible">1</attribute>
+        </field>
+        <xpath expr="//field[@name='employee_id']" position="after">
+          <field name="partner_id"/>
+        </xpath>
+        <xpath expr="//field[@name='maintenance_type']" position="after">
+          <field name="maintenance_priority"/>
+        </xpath>
+        <xpath expr="//field[@name='user_id']" position="after">
+          <field name="acting_user_ids" widget="many2many_tags"/>
+        </xpath>
+        <xpath expr="//field[@name='category_id']" position="after">
+          <field name="department_id" attrs="{'invisible': [('equipment_id', '=', False)]}"/>
+        </xpath>
+        <xpath expr="//sheet/group" position="after">
+          <hr></hr>
+          <group>
+            <field name="product_structure_ids" widget="section_and_note_one2many" mode="tree,kanban">
+              <tree string="Productos a consumir" editable="bottom">
+                <control>
+                  <create name="add_product_control" string="Agregar producto"/>
+                </control>
+                <field name="product_id" string="Producto"/>
+                <field name="quantity" string="Cantidad"/>
+                <field name="unit_of_measurement" string="Unidad de medida "/>
+              </tree>
+            </field>
+          </group>
+        </xpath>
+      </field>
+    </record>
+
+    <record id="view_maintenance_equipment_form_inherit" model="ir.ui.view">
+      <field name="name">maintenance.equipment.inherit</field>
+      <field name="model">maintenance.equipment</field>
+      <field name="inherit_id" ref="maintenance.hr_equipment_view_form"></field>
+      <field name="arch" type="xml">
+        <xpath expr="//page[@name='maintenance']" position="after">
+          <page string="Estructura">
+            <group>
+              <field name="product_structure_ids" widget="section_and_note_one2many" mode="tree,kanban">
+                <tree string="Estructura de productos" editable="bottom">
+                  <control>
+                    <create name="add_product_control" string="Agregar producto"/>
+                  </control>
+                  <field name="product_id" string="Producto"/>
+                  <field name="quantity" string="Cantidad"/>
+                  <field name="unit_of_measurement" string="Unidad de medida "/>
+                </tree>
+              </field>
+            </group>
+          </page>
+        </xpath>
+      </field>
+    </record>
+
+    <record id="view_maintenance_request_plan_form_inherit" model="ir.ui.view">
+      <field name="name">maintenance.plan.request.inherit</field>
+      <field name="model">maintenance.request</field>
+      <field name="inherit_id" ref="maintenance_plan.hr_equipment_request_view_form"></field>
+      <field name="arch" type="xml">
+        <field name="maintenance_kind_id" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </field>
+        <xpath expr="//notebook/page" position="after">
+          <page string="Estructura del equipamiento">
+              <field name="equipment_structure_ids" widget="section_and_note_one2many" mode="tree,kanban">
+                <tree string="Estructura del equipamiento">
+                  <field name="product_id" string="Producto"/>
+                  <field name="quantity" string="Cantidad"/>
+                  <field name="unit_of_measurement" string="Unidad de medida "/>
+                </tree>
+              </field>
+          </page>
+        </xpath>
+      </field>
+    </record>
+
+    <record id="view_maintenance_plan_form_inherit" model="ir.ui.view">
+      <field name="name">maintenance.plan.inherit</field>
+      <field name="model">maintenance.plan</field>
+      <field name="inherit_id" ref="maintenance_plan.maintenance_plan_view_form"></field>
+      <field name="arch" type="xml">
+        <field name="maintenance_kind_id" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </field>
+      </field>
+    </record>
+
+    <record id="view_maintenance_project_form_inherit" model="ir.ui.view">
+      <field name="name">maintenance.project.inherit</field>
+      <field name="model">maintenance.request</field>
+      <field name="inherit_id" ref="maintenance_project.hr_equipment_request_view_form"></field>
+      <field name="arch" type="xml">
+        <field name="project_id" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </field>
+        <field name="task_id" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </field>
+      </field>
+    </record>
+
+
+    <record id="view_picking_form_inherit" model="ir.ui.view">
+      <field name="name">stock.picking.inherit</field>
+      <field name="model">stock.picking</field>
+      <field name="inherit_id" ref="stock.view_picking_form"></field>
+      <field name="arch" type="xml">
+        <field name="origin" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </field>
+        <field name="origin" position="after">
+          <field name="ticket_id"/>
+        </field>
+      </field>
+    </record>
+
+    <record id="maintenance_portal_timesheet_view_tree_user" model="ir.ui.view">
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="maintenance_timesheet.timesheet_view_tree_user" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='employee_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='employee_id']" position="after">
+                <field name="acting_user_id"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="maintenance_equipment_action_server" model="ir.actions.server">
+      <field name="name">Generar Peticiones de mantenimiento</field>
+      <field name="model_id" ref="model_maintenance_equipment"/>
+      <field name="binding_model_id" ref="model_maintenance_equipment"/>
+      <field name="state">code</field>
+      <field name="code">
+          model._cron_generate_requests()
+      </field>
+    </record>
+
+  </data>
+</odoo>

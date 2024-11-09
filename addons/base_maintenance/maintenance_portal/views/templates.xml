@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template
+        id="portal_layout"
+        name="Portal layout: Maintenance request menu entry"
+        inherit_id="portal.portal_breadcrumbs"
+        priority="50"
+    >
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li
+                t-if="page_name == 'maintenance' or maintenance"
+                t-attf-class="breadcrumb-item #{'active ' if not maintenance else ''}"
+            >
+                <a
+                    t-if="maintenance"
+                    t-attf-href="/my/maintenance_req?{{ keep_query() }}"
+                >Peticiones</a>
+                <t t-else="">Peticiones</t>
+            </li>
+            <li t-if="maintenance" class="breadcrumb-item active">
+                <t t-esc="maintenance.name" />
+            </li>
+        </xpath>
+    </template>
+
+  <template
+        id="portal_maintenance_requests"
+        name="Portal My Home : Maintenance requests"
+        inherit_id="portal.portal_my_home"
+        priority="40"
+    >
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Peticiones de mantenimiento</t>
+                <t t-set="url" t-value="'/my/maintenance_req'" />
+                <t t-set="count" t-value="request_count" />
+            </t>
+            <form method="POST" t-attf-action="/new/maintenance_req">
+                <input
+                    type="hidden"
+                    name="csrf_token"
+                    t-att-value="request.csrf_token()"
+                />
+                <button
+                    name="create_new_request"
+                    type="action"
+                    class="btn btn-primary"
+                    style="float: right; margin-right: 0px; margin-top:5px;"
+                >Nueva Peticion</button>
+            </form>
+        </xpath>
+    </template>
+
+    <template id="portal_my_requests" name="My Requests">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True" />
+            <form method="POST" t-attf-action="/new/maintenance_req">
+                <h3>Peticiones de mantenimiento
+            <t t-call="portal.portal_searchbar" />
+            <button
+                        name="create_new_request"
+                        type="action"
+                        class="btn btn-primary"
+                        style="float: right; margin-right: 5px;"
+                    >Nueva Peticion</button>
+          </h3>
+                <input
+                    type="hidden"
+                    name="csrf_token"
+                    t-att-value="request.csrf_token()"
+                />
+            </form>
+            <t t-if="not maint_req">
+                <p>No existen peticiones de mantenimiento para este usuario</p>
+            </t>
+            <div t-if="maint_req" class="panel panel-default">
+                <div class="table-responsive">
+                    <table class="table table-hover o_portal_my_doc_table">
+                        <thead>
+                            <tr class="active">
+                                <th>Por</th>
+                                <th>Numero</th>
+                                <th>Prioridad</th>
+                                <th>Nombre</th>
+                                <th>Equipamiento</th>
+                                <th>Etapa</th>
+                                <th>Fecha de creacion</th>
+                                <th>Fecha prevista de realizacion</th>
+                                <th>Fecha de cierre</th>
+                            </tr>
+                        </thead>
+                        <t t-foreach="maint_req" t-as="req">
+                            <tr>
+                                <td>
+                                    <t t-esc="req.partner_id.name" />
+                                </td>
+                                <td>
+                                    <t t-esc="req.code" />
+                                </td>
+                                <td>
+                                    <t t-esc="req.maintenance_priority" />
+                                </td>
+                                <td>
+                                    <a t-attf-href="/my/maintenance_req/#{req.id}">
+                                        <t t-esc="req.name" />
+                                    </a>
+                                </td>
+                                <td>
+                                    <t t-esc="req.equipment_id.name" />
+                                </td>
+                                <td>
+                                    <t t-esc="req.stage_id.name" />
+                                </td>
+                                <td>
+                                    <span t-field="req.request_date" />
+                                </td>
+                                <td>
+                                    <span t-field="req.schedule_date" />
+                                </td>
+                                <td>
+                                    <span t-field="req.close_date" />
+                                </td>
+                            </tr>
+                        </t>
+                    </table>
+                </div>
+                <div t-if="pager" class="o_portal_pager text-center">
+                    <t t-call="portal.pager" />
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="portal_maintenance_request_page" name="Maintenance Request Portal Template">
+        <t t-call="portal.portal_layout">
+            <div class="container">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row mt-2">
+                            <div class="col-md-12">
+                                <h4>
+                                    <t t-call='portal.record_pager' />
+                                    <span t-field="maintenance.name" />
+                                </h4>
+                            </div>
+                        </div>                   
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                                <div class="col-6">
+                                    <strong>Numero:</strong>
+                                    <span t-esc="maintenance.code" />
+                                    <br />
+                                    <strong>Prioridad:</strong>
+                                    <span t-esc="prioridad" />
+                                    <br />
+                                    <strong>Fecha:</strong>
+                                    <span t-esc="maintenance.request_date" />
+                                    <br />
+                                    <b>Equipamiento:</b>
+                                    <t t-esc="maintenance.equipment_id.name" />
+                                    <br />
+                                    <b>Etapa:</b>
+                                    <t t-esc="maintenance.stage_id.name" />
+                                    <br />
+                                    <b>Fecha Prevista:</b>
+                                    <t t-esc="maintenance.schedule_date" />
+                                    <br />
+                                    <b>Tipo de mantenimiento:</b>
+                                    <t t-esc="maintenance.maintenance_type" />
+                                    <br />
+                                    <b>Equipo de mantenimiento:</b>
+                                    <t t-esc="maintenance.maintenance_team_id.name" />
+                                    <br />
+                                    <b>Duracion:</b>
+                                    <t t-esc="maintenance.duration" /><span> Hs</span>
+                                    <br />
+                                    <b>Descripcion:</b>
+                                    <t t-esc="maintenance.description" />
+                                    <br />
+                                    <br />
+                                    <div class="row">
+                                      <div class="col-6">
+                                          <t t-foreach="closed_stages" t-as="stage">
+                                              <form
+                                                  method="GET"
+                                                  t-if="not maintenance.close_date"
+                                                  t-attf-action="/maintenance_req/close"
+                                                  style="display:inline;"
+                                              >
+                                                  <input
+                                                      type="hidden"
+                                                      name="maintenance_id"
+                                                      t-attf-value="#{maintenance.id}"
+                                                  />
+                                                  <input
+                                                      type="hidden"
+                                                      name="stage_id"
+                                                      t-attf-value="#{stage.id}"
+                                                  />
+                                                  <button
+                                                      class="btn btn-success pull-right"
+                                                      style="margin-right:15px;margin-top:3px;"
+                                                  >
+                                                      <span t-field="stage.name" />
+                                                  </button>
+                                              </form>
+                                          </t>
+                                      </div>
+                                    </div>
+                                    <br />
+                                    <hr/>
+                                    <h4 class="page-header">History</h4>
+                                    <t t-call="portal.message_thread">
+                                        <t t-set="object" t-value="maintenance" />
+                                    </t>
+                                </div>
+                            <br />
+                            <br />
+                        </div>
+
+                        
+
+                    </div>
+                </div>
+            </div>
+            <div class="oe_structure mb32" />
+        </t>
+    </template>
+
+    <template id="portal_create_request" name="Create Maintenance Request">
+        <t t-call="portal.portal_layout">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="text-center">Crear una peticion de mantenimiento</h1>
+                    </div>
+                </div>
+            </div>
+            <form
+                action="/submitted/request"
+                method="POST"
+                class="form-horizontal mt32"
+                enctype="multipart/form-data"
+            >
+                <input
+                    type="hidden"
+                    name="csrf_token"
+                    t-att-value="request.csrf_token()"
+                />
+                <div class="form-group">
+                    <label
+                        class="col-md-3 col-sm-4 control-label"
+                        for="request_name"
+                    >Nombre de la peticion</label>
+                    <div class="col-md-7 col-sm-8">
+                      <input
+                            class="form-control"
+                            id="request_name"
+                            name="request_name"
+                            required="True"
+                            type= "text"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label
+                        class="col-md-3 col-sm-4 control-label"
+                        for="req_equipment"
+                    >Equipamiento</label>
+                    <div class="col-md-7 col-sm-8">
+                        <select
+                            class="form-control"
+                            id="req_equipment"
+                            name="req_equipment"
+                        >
+                            <option></option>
+                            <t t-foreach="equipment" t-as="eq">
+                                <option t-attf-value="#{eq.id}">
+                                    <t t-esc="eq.name" />
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label
+                        class="col-md-3 col-sm-4 control-label"
+                        for="prior"
+                    >Prioridad</label>
+                    <div class="col-md-7 col-sm-8">
+                        <select
+                            class="form-control"
+                            id="prior"
+                            name="prior"
+                            required="True"
+                        >
+                            <t t-foreach="priority_opt" t-as="prior">
+                                <option t-attf-value="#{prior[0]}">
+                                    <t t-esc="prior[1]" />
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label
+                        class="col-md-3 col-dm-4 control-label"
+                        for="req_description"
+                    >Descripcion</label>
+                    <div class="col-md-7 col-sm-8">
+                        <textarea
+                            class="form-control"
+                            id="req_description"
+                            name="req_description"
+                            style="min-height: 120px"
+                            required="True"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-3 col-sm-offset-4 col-sm-8 col-md-7">
+                        <button class="btn btn-primary btn-lg">Submit Ticket</button>
+                    </div>
+                </div>
+            </form>
+        </t>
+    </template>
+
+</odoo>
