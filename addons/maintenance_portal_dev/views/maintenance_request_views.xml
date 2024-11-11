@@ -1,5 +1,25 @@
 <odoo>
   <data>
+
+    <record model="ir.ui.view" id="maintenance_request_view_form_inherit">
+        <field
+            name="name"
+        >maintenance.request.form (in maintenance_request_sequence)</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='employee_id']" position="after">
+                    <field
+                        name="partner_id"
+                        attrs="{
+                        'invisible': [('id', '!=', False), ('partner_id', '=', False)],
+                        'readonly': [('partner_id', '=', True)]
+                        }"
+                    />
+            </xpath>
+        </field>
+    </record>
+    
     <!-- explicit list view definition -->
 <!--
     <record model="ir.ui.view" id="maintenance_portal_dev.list">
