@@ -30990,3 +30990,123 @@ File: "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 347, in execute
 2024-11-11 12:50:53,299 12940 INFO dev_database werkzeug: 172.21.0.1 - - [11/Nov/2024 12:50:53] "POST /web/dataset/call_kw/mail.activity/activity_format HTTP/1.1" 200 - 1 0.006 0.079
 2024-11-11 12:50:53,300 12940 DEBUG dev_database odoo.api: call mail.activity().activity_format() 
 2024-11-11 12:50:53,315 12940 INFO dev_database werkzeug: 172.21.0.1 - - [11/Nov/2024 12:50:53] "POST /web/dataset/call_kw/mail.activity/activity_format HTTP/1.1" 200 - 1 0.006 0.068
+2024-11-11 12:51:30,009 12940 DEBUG ? odoo.service.server: cron1 polling for jobs 
+2024-11-11 12:51:30,102 12940 DEBUG ? odoo.service.server: cron1 polling for jobs 
+2024-11-11 12:51:42,157 12940 INFO dev_database werkzeug: 172.21.0.1 - - [11/Nov/2024 12:51:42] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.039 50.070
+2024-11-11 12:51:42,222 12940 DEBUG dev_database odoo.modules.registry: Multiprocess signaling check: [Registry - 24 -> 24] [Cache - 12 -> 12] 
+2024-11-11 12:51:42,718 12940 DEBUG dev_database odoo.modules.registry: Multiprocess signaling check: [Registry - 24 -> 24] [Cache - 12 -> 12] 
+2024-11-11 12:51:42,729 12940 INFO dev_database werkzeug: 172.21.0.1 - - [11/Nov/2024 12:51:42] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.010
+2024-11-11 12:52:31,069 12940 DEBUG ? odoo.service.server: cron1 polling for jobs 
+2024-11-11 12:52:31,177 12940 DEBUG ? odoo.service.server: cron1 polling for jobs 
+2024-11-11 12:52:32,249 12940 INFO dev_database werkzeug: 172.21.0.1 - - [11/Nov/2024 12:52:32] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 50.024
+2024-11-11 12:52:32,262 12940 DEBUG dev_database odoo.modules.registry: Multiprocess signaling check: [Registry - 24 -> 24] [Cache - 12 -> 12] 
+2024-11-11 12:52:33,709 12940 DEBUG dev_database odoo.modules.registry: Multiprocess signaling check: [Registry - 24 -> 24] [Cache - 12 -> 12] 
+2024-11-11 12:52:33,721 12940 INFO dev_database werkzeug: 172.21.0.1 - - [11/Nov/2024 12:52:33] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.011
+2024-11-11 12:53:22,280 12940 INFO dev_database werkzeug: 172.21.0.1 - - [11/Nov/2024 12:53:22] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.005 50.016
+2024-11-11 12:53:22,351 12940 DEBUG dev_database odoo.modules.registry: Multiprocess signaling check: [Registry - 24 -> 24] [Cache - 12 -> 12] 
+2024-11-11 12:53:24,713 12940 DEBUG dev_database odoo.modules.registry: Multiprocess signaling check: [Registry - 24 -> 24] [Cache - 12 -> 12] 
+2024-11-11 12:53:24,724 12940 INFO dev_database werkzeug: 172.21.0.1 - - [11/Nov/2024 12:53:24] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.002 0.010
+2024-11-11 12:53:32,146 12940 DEBUG ? odoo.service.server: cron1 polling for jobs 
+2024-11-11 12:53:32,231 12940 DEBUG ? odoo.service.server: cron1 polling for jobs 
+2024-11-11 12:54:12,382 12940 INFO dev_database werkzeug: 172.21.0.1 - - [11/Nov/2024 12:54:12] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 50.028
+2024-11-11 12:54:12,395 12940 DEBUG dev_database odoo.modules.registry: Multiprocess signaling check: [Registry - 24 -> 24] [Cache - 12 -> 12] 
+2024-11-11 12:54:15,707 12940 DEBUG dev_database odoo.modules.registry: Multiprocess signaling check: [Registry - 24 -> 24] [Cache - 12 -> 12] 
+2024-11-11 12:54:15,719 12940 INFO dev_database werkzeug: 172.21.0.1 - - [11/Nov/2024 12:54:15] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.003 0.011
+2024-11-11 12:54:33,223 12940 DEBUG ? odoo.service.server: cron1 polling for jobs 
+2024-11-11 12:54:33,308 12940 DEBUG ? odoo.service.server: cron1 polling for jobs 
+2024-11-11 12:55:02,415 12940 INFO dev_database werkzeug: 172.21.0.1 - - [11/Nov/2024 12:55:02] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.004 50.017
+2024-11-11 12:55:02,477 12940 DEBUG dev_database odoo.modules.registry: Multiprocess signaling check: [Registry - 24 -> 24] [Cache - 12 -> 12] 
+2024-11-11 12:55:06,764 12940 DEBUG dev_database odoo.modules.registry: Multiprocess signaling check: [Registry - 24 -> 24] [Cache - 12 -> 12] 
+2024-11-11 12:55:06,780 12940 INFO dev_database werkzeug: 172.21.0.1 - - [11/Nov/2024 12:55:06] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.004 0.014
+2024-11-11 12:55:34,267 12940 DEBUG ? odoo.service.server: cron1 polling for jobs 
+2024-11-11 12:55:34,284 12940 DEBUG dev_database odoo.addons.base.models.ir_cron: job 1 acquired 
+2024-11-11 12:55:34,317 12940 DEBUG dev_database odoo.modules.registry: Multiprocess signaling check: [Registry - 24 -> 24] [Cache - 12 -> 12] 
+2024-11-11 12:55:34,343 12940 DEBUG dev_database odoo.addons.base.models.ir_cron: cron.object.execute('dev_database', 1, '*', 'Base: Auto-vacuum internal data', 34) 
+2024-11-11 12:55:34,344 12940 INFO dev_database odoo.addons.base.models.ir_cron: Starting job `Base: Auto-vacuum internal data`. 
+2024-11-11 12:55:34,350 12940 DEBUG ? odoo.service.server: cron1 polling for jobs 
+2024-11-11 12:55:34,365 12940 DEBUG dev_database odoo.addons.base.models.ir_cron: another worker is processing job 1, skip 
+2024-11-11 12:55:34,427 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling wizard.ir.model.menu.create()._transient_vacuum() 
+2024-11-11 12:55:34,465 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling reset.view.arch.wizard()._transient_vacuum() 
+2024-11-11 12:55:34,513 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling ir.attachment()._gc_file_store() 
+2024-11-11 12:55:34,586 12940 INFO dev_database odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2024-11-11 12:55:34,590 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling ir.cron.trigger()._gc_cron_triggers() 
+2024-11-11 12:55:34,672 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling ir.demo()._transient_vacuum() 
+2024-11-11 12:55:34,678 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling ir.demo_failure()._transient_vacuum() 
+2024-11-11 12:55:34,697 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling ir.demo_failure.wizard()._transient_vacuum() 
+2024-11-11 12:55:34,709 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling ir.profile()._gc_profile() 
+2024-11-11 12:55:34,723 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling base.enable.profiling.wizard()._transient_vacuum() 
+2024-11-11 12:55:34,765 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling res.config()._transient_vacuum() 
+2024-11-11 12:55:34,771 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling res.config.installer()._transient_vacuum() 
+2024-11-11 12:55:34,786 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling res.config.settings()._transient_vacuum() 
+2024-11-11 12:55:34,814 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling res.users.log()._gc_user_logs() 
+2024-11-11 12:55:34,818 12940 INFO dev_database odoo.addons.base.models.res_users: GC'd 0 user log entries 
+2024-11-11 12:55:34,828 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling res.users.identitycheck()._transient_vacuum() 
+2024-11-11 12:55:34,834 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling change.password.wizard()._transient_vacuum() 
+2024-11-11 12:55:34,840 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling change.password.user()._transient_vacuum() 
+2024-11-11 12:55:34,845 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling res.users.apikeys.description()._transient_vacuum() 
+2024-11-11 12:55:34,856 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling base.module.update()._transient_vacuum() 
+2024-11-11 12:55:34,862 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling base.language.install()._transient_vacuum() 
+2024-11-11 12:55:34,869 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling base.language.import()._transient_vacuum() 
+2024-11-11 12:55:34,874 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling base.module.upgrade()._transient_vacuum() 
+2024-11-11 12:55:34,879 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling base.module.uninstall()._transient_vacuum() 
+2024-11-11 12:55:34,888 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling base.language.export()._transient_vacuum() 
+2024-11-11 12:55:34,892 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling base.update.translations()._transient_vacuum() 
+2024-11-11 12:55:34,895 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling base.partner.merge.line()._transient_vacuum() 
+2024-11-11 12:55:34,900 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling base.partner.merge.automatic.wizard()._transient_vacuum() 
+2024-11-11 12:55:34,907 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling base.document.layout()._transient_vacuum() 
+2024-11-11 12:55:34,913 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling auth_totp.device()._gc_device() 
+2024-11-11 12:55:34,920 12940 INFO dev_database odoo.addons.auth_totp.models.auth_totp: GC'd 0 totp devices entries 
+2024-11-11 12:55:34,922 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling auth_totp.wizard()._transient_vacuum() 
+2024-11-11 12:55:34,932 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling base_import.import()._transient_vacuum() 
+2024-11-11 12:55:34,949 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling bus.bus()._gc_messages() 
+2024-11-11 12:55:34,998 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling mail.channel.rtc.session()._gc_inactive_sessions() 
+2024-11-11 12:55:35,017 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling mail.blacklist.remove()._transient_vacuum() 
+2024-11-11 12:55:35,024 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling mail.compose.message()._gc_lost_attachments() 
+2024-11-11 12:55:35,029 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling mail.compose.message()._transient_vacuum() 
+2024-11-11 12:55:35,038 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling mail.resend.cancel()._transient_vacuum() 
+2024-11-11 12:55:35,041 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling mail.resend.message()._transient_vacuum() 
+2024-11-11 12:55:35,045 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling mail.resend.partner()._transient_vacuum() 
+2024-11-11 12:55:35,048 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling mail.template.preview()._transient_vacuum() 
+2024-11-11 12:55:35,052 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling mail.wizard.invite()._transient_vacuum() 
+2024-11-11 12:55:35,085 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling hr.plan.wizard()._transient_vacuum() 
+2024-11-11 12:55:35,095 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling hr.departure.wizard()._transient_vacuum() 
+2024-11-11 12:55:35,118 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling phone.blacklist.remove()._transient_vacuum() 
+2024-11-11 12:55:35,134 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling portal.share()._transient_vacuum() 
+2024-11-11 12:55:35,146 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling portal.wizard()._transient_vacuum() 
+2024-11-11 12:55:35,155 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling portal.wizard.user()._transient_vacuum() 
+2024-11-11 12:55:35,168 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling sms.cancel()._transient_vacuum() 
+2024-11-11 12:55:35,182 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling sms.composer()._transient_vacuum() 
+2024-11-11 12:55:35,188 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling sms.resend.recipient()._transient_vacuum() 
+2024-11-11 12:55:35,193 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling sms.resend()._transient_vacuum() 
+2024-11-11 12:55:35,200 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling sms.template.preview()._transient_vacuum() 
+2024-11-11 12:55:35,206 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling snailmail.letter.cancel()._transient_vacuum() 
+2024-11-11 12:55:35,211 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling snailmail.letter.format.error()._transient_vacuum() 
+2024-11-11 12:55:35,230 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling snailmail.letter.missing.required.fields()._transient_vacuum() 
+2024-11-11 12:55:35,272 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling project.delete.wizard()._transient_vacuum() 
+2024-11-11 12:55:35,285 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling project.task.type.delete.wizard()._transient_vacuum() 
+2024-11-11 12:55:35,289 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling project.share.wizard()._transient_vacuum() 
+2024-11-11 12:55:35,292 12940 DEBUG dev_database odoo.addons.base.models.ir_autovacuum: Calling project.task.create.timesheet()._transient_vacuum() 
+2024-11-11 12:55:35,312 12940 INFO dev_database odoo.addons.base.models.ir_cron: Job `Base: Auto-vacuum internal data` done. 
+2024-11-11 12:55:35,312 12940 DEBUG dev_database odoo.addons.base.models.ir_cron: 0.968s (cron Base: Auto-vacuum internal data, server action 34 with uid 1) 
+2024-11-11 12:55:35,320 12940 DEBUG dev_database odoo.addons.base.models.ir_cron: job 1 updated and released 
+2024-11-11 12:55:52,506 12940 INFO dev_database werkzeug: 172.21.0.1 - - [11/Nov/2024 12:55:52] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.006 50.025
+2024-11-11 12:55:52,519 12940 DEBUG dev_database odoo.modules.registry: Multiprocess signaling check: [Registry - 24 -> 24] [Cache - 12 -> 12] 
+2024-11-11 12:55:57,724 12940 DEBUG dev_database odoo.modules.registry: Multiprocess signaling check: [Registry - 24 -> 24] [Cache - 12 -> 12] 
+2024-11-11 12:55:57,748 12940 INFO dev_database werkzeug: 172.21.0.1 - - [11/Nov/2024 12:55:57] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.012 0.017
+2024-11-11 12:56:35,444 12940 DEBUG ? odoo.service.server: cron1 polling for jobs 
+2024-11-11 12:56:36,391 12940 DEBUG ? odoo.service.server: cron1 polling for jobs 
+2024-11-11 12:56:42,624 12940 INFO dev_database werkzeug: 172.21.0.1 - - [11/Nov/2024 12:56:42] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.027 50.080
+2024-11-11 12:56:42,697 12940 DEBUG dev_database odoo.modules.registry: Multiprocess signaling check: [Registry - 24 -> 24] [Cache - 12 -> 12] 
+2024-11-11 12:56:48,776 12940 DEBUG dev_database odoo.modules.registry: Multiprocess signaling check: [Registry - 24 -> 24] [Cache - 12 -> 12] 
+2024-11-11 12:56:48,797 12940 INFO dev_database werkzeug: 172.21.0.1 - - [11/Nov/2024 12:56:48] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.006 0.016
+2024-11-11 12:57:32,856 12940 INFO dev_database werkzeug: 172.21.0.1 - - [11/Nov/2024 12:57:32] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.068 50.103
+2024-11-11 12:57:32,870 12940 DEBUG dev_database odoo.modules.registry: Multiprocess signaling check: [Registry - 24 -> 24] [Cache - 12 -> 12] 
+2024-11-11 12:57:36,575 12940 DEBUG ? odoo.service.server: cron1 polling for jobs 
+2024-11-11 12:57:37,553 12940 DEBUG ? odoo.service.server: cron1 polling for jobs 
+2024-11-11 12:57:39,729 12940 DEBUG dev_database odoo.modules.registry: Multiprocess signaling check: [Registry - 24 -> 24] [Cache - 12 -> 12] 
+2024-11-11 12:57:39,755 12940 INFO dev_database werkzeug: 172.21.0.1 - - [11/Nov/2024 12:57:39] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.011 0.021
+2024-11-11 12:58:22,915 12940 INFO dev_database werkzeug: 172.21.0.1 - - [11/Nov/2024 12:58:22] "POST /longpolling/poll HTTP/1.1" 200 - 9 0.030 50.017
+2024-11-11 12:58:22,940 12940 DEBUG dev_database odoo.modules.registry: Multiprocess signaling check: [Registry - 24 -> 24] [Cache - 12 -> 12] 
+2024-11-11 12:58:30,762 12940 DEBUG dev_database odoo.modules.registry: Multiprocess signaling check: [Registry - 24 -> 24] [Cache - 12 -> 12] 
+2024-11-11 12:58:30,775 12940 INFO dev_database werkzeug: 172.21.0.1 - - [11/Nov/2024 12:58:30] "POST /longpolling/im_status HTTP/1.1" 200 - 4 0.004 0.011
+2024-11-11 12:58:37,641 12940 DEBUG ? odoo.service.server: cron1 polling for jobs 
