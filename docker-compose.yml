@@ -14,6 +14,7 @@ services:
       - ./config:/etc/odoo
       - ./addons:/usr/lib/python3/dist-packages/odoo/extra-addons
       - ./.vscode:/usr/lib/python3/dist-packages/odoo/.vscode
+      - ./log:/var/log/odoo
       - /home/dguzman/.ssh/:/root/.ssh/
   db:
     restart: always

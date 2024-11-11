@@ -17,6 +17,14 @@
                         }"
                     />
             </xpath>
+            <xpath expr="//field[@name='category_id']" position="after">
+                    <field
+                        name="department_id"
+                        attrs="{
+                        'invisible': ['|', ('equipment_id', '=', False), ('department_id', '=', False)],
+                        }"
+                    />
+            </xpath>
         </field>
     </record>
     
