@@ -1,4 +1,5 @@
 ./external_addons
 
+__pycache__/
 log/
 *.log
