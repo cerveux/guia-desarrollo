@@ -25,6 +25,9 @@
                         }"
                     />
             </xpath>
+            <xpath expr="//field[@name='user_id']" position="after">
+            <field name="acting_user_ids" widget="many2many_tags"/>
+            </xpath>
         </field>
     </record>
     
