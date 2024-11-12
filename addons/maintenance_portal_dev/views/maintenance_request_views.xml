@@ -26,25 +26,25 @@
                     />
             </xpath>
             <xpath expr="//field[@name='user_id']" position="after">
-            <field name="acting_user_ids" widget="many2many_tags"/>
+              <field name="acting_user_ids" widget="many2many_tags"/>
+            </xpath>
+            <xpath expr="//field[@name='priority']" position="attributes">
+              <attribute name="invisible">True</attribute>
             </xpath>
         </field>
     </record>
     
     <!-- explicit list view definition -->
-<!--
-    <record model="ir.ui.view" id="maintenance_portal_dev.list">
-      <field name="name">maintenance_portal_dev list</field>
-      <field name="model">maintenance_portal_dev.maintenance_portal_dev</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
-        </tree>
-      </field>
+    <record id="maintenance_request_view_kanban_inherit" model="ir.ui.view">
+        <field name="name">maintenance.request.view.kanban.inherit</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@class='o_kanban_record_bottom']//field[@name='priority']" position="replace">
+
+        </xpath>
+        </field>
     </record>
--->
 
     <!-- actions opening views on models -->
 <!--
