@@ -12,6 +12,13 @@ class MaintenanceRequest(models.Model):
     department_id = fields.Many2one('hr.department', readonly=True, string='Departamento')
     acting_user_ids = fields.Many2many( 'res.users', string='Ejecutantes', 
                                         domain=lambda self: [('id', 'in', self._get_maintenance_team_user_ids())])
+    maintenance_priority = fields.Selection([
+        ( 'maquina_parada', '1- Máquina parada / producción detenida'),
+        ( 'maquina_funcionando', '2- Máquina funcionando / necesidad de reparación'),
+        ( 'no_afecta', '3- No afecta a la producción'),
+        ( 'otro', '4- Otro / detallar en notas'),
+    ],
+                                            string='Prioridad')
     
     @api.onchange('equipment_id')
     def onchange_equipment_id(self):
