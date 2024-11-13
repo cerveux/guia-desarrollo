@@ -35,12 +35,6 @@
             <xpath expr="//field[@name='maintenance_type']" position="after">
               <field name="maintenance_priority" />
             </xpath>
-            <!-- ejercicio 1-g -->
-            <!-- <xpath expr="//notebook/page[last()]" position="after">
-            <page string="Lista de Productos">
-                <field name="maintenance_product_list" widget="section_and_note_one2many"/>
-            </page>
-            </xpath> -->
         </field>
     </record>
     
@@ -84,49 +78,9 @@
                 </field>
             </page>
         </xpath>
+        <!-- ejercicio 1-i -->
+        <xpath expr="//field[@name='maintenance_kind_id']" position="replace"/>
       </field>
     </record>
-
-    <!-- actions opening views on models -->
-<!--
-    <record model="ir.actions.act_window" id="maintenance_portal_dev.action_window">
-      <field name="name">maintenance_portal_dev window</field>
-      <field name="res_model">maintenance_portal_dev.maintenance_portal_dev</field>
-      <field name="view_mode">tree,form</field>
-    </record>
--->
-
-    <!-- server action to the one above -->
-<!--
-    <record model="ir.actions.server" id="maintenance_portal_dev.action_server">
-      <field name="name">maintenance_portal_dev server</field>
-      <field name="model_id" ref="model_maintenance_portal_dev_maintenance_portal_dev"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": model._name,
-        }
-      </field>
-    </record>
--->
-
-    <!-- Top menu item -->
-<!--
-    <menuitem name="maintenance_portal_dev" id="maintenance_portal_dev.menu_root"/>
--->
-    <!-- menu categories -->
-<!--
-    <menuitem name="Menu 1" id="maintenance_portal_dev.menu_1" parent="maintenance_portal_dev.menu_root"/>
-    <menuitem name="Menu 2" id="maintenance_portal_dev.menu_2" parent="maintenance_portal_dev.menu_root"/>
--->
-    <!-- actions -->
-<!--
-    <menuitem name="List" id="maintenance_portal_dev.menu_1_list" parent="maintenance_portal_dev.menu_1"
-              action="maintenance_portal_dev.action_window"/>
-    <menuitem name="Server to list" id="maintenance_portal_dev" parent="maintenance_portal_dev.menu_2"
-              action="maintenance_portal_dev.action_server"/>
--->
   </data>
 </odoo>
