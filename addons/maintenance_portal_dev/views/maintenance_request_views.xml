@@ -35,6 +35,12 @@
             <xpath expr="//field[@name='maintenance_type']" position="after">
               <field name="maintenance_priority" />
             </xpath>
+            <!-- ejercicio 1-g -->
+            <!-- <xpath expr="//notebook/page[last()]" position="after">
+            <page string="Lista de Productos">
+                <field name="maintenance_product_list" widget="section_and_note_one2many"/>
+            </page>
+            </xpath> -->
         </field>
     </record>
     
@@ -49,6 +55,36 @@
             <field name="maintenance_priority" widget="badge" nolabel="1"/>
           </xpath>
         </field>
+    </record>
+
+
+    <record id="view_maintenance_request_plan_form_inherit" model="ir.ui.view">
+      <field name="name">maintenance.plan.request.inherit</field>
+      <field name="model">maintenance.request</field>
+      <field name="inherit_id" ref="maintenance_plan.hr_equipment_request_view_form"></field>
+      <field name="arch" type="xml">
+        <xpath expr="//notebook/page[last()]" position="after">
+            <page string="Lista de Productos">
+                <field name="maintenance_product_list" widget="section_and_note_one2many">
+
+                      <tree string="">
+                        <field name="product_id" />
+                        <field name="quantity" />
+                        <field name="uom_id" />                        
+                      </tree>
+                      <form string="">
+                        <sheet>
+                          <group>
+                          <field name="product_id" />
+                          <field name="quantity" />
+                          <field name="uom_id" />                          
+                          </group>
+                        </sheet>
+                      </form>
+                </field>
+            </page>
+        </xpath>
+      </field>
     </record>
 
     <!-- actions opening views on models -->
