@@ -32,3 +32,15 @@ class MaintenanceRequest(models.Model):
         maintenance_teams = self.env['maintenance.team'].search([])
         user_ids = maintenance_teams.mapped('member_ids').ids
         return user_ids
+    
+    @api.model
+    def create(self, vals):
+        if vals.get("code", "/") == "/":
+            team_id = vals.get("maintenance_team_id")
+            sequence = self.env["maintenance.team"].browse(
+                team_id
+            ).sequence_id or self.env.ref(
+                "maintenance_portal_dev.seq_maintenance_request_auto_dev"
+            )
+            vals["code"] = sequence.next_by_id()
+        return super().create(vals)
