@@ -61,21 +61,30 @@
       <field name="arch" type="xml">
         <xpath expr="//notebook/page[last()]" position="after">
             <page string="Lista de Productos">
-                <field name="maintenance_product_list" widget="section_and_note_one2many">
-                      <tree string="">
-                        <field name="product_id" />
-                        <field name="quantity" />
-                        <field name="uom_id" />                        
-                      </tree>
-                      <form string="">
-                        <sheet>
-                          <group>
-                          <field name="product_id" />
-                          <field name="quantity" />
-                          <field name="uom_id" />                          
-                          </group>
-                        </sheet>
-                      </form>
+              <field name="maintenance_product_list" widget="section_and_note_one2many">
+                <tree string="">
+                  <field name="product_id" />
+                  <field name="quantity" />
+                  <field name="uom_id" />                        
+                </tree>
+                <form string="">
+                  <sheet>
+                    <group>
+                    <field name="product_id" />
+                    <field name="quantity" />
+                    <field name="uom_id" />                          
+                    </group>
+                  </sheet>
+                </form>
+              </field>
+            </page>
+            <page string="Estructura del equipamiento">
+              <field name="equipment_structure_ids" widget="section_and_note_one2many">
+                <tree string="">
+                  <field name="product_id" />
+                  <field name="quantity" />
+                  <field name="uom_id" />      
+                </tree>
                 </field>
             </page>
         </xpath>
