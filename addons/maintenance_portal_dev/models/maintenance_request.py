@@ -21,6 +21,8 @@ class MaintenanceRequest(models.Model):
                                             string='Prioridad')
     # mala práctica debería terminar con _ids un mejor nombre seria product_list_ids
     maintenance_product_list = fields.One2many( 'maintenance.product.list', 'request_id', string='Productos para mantenimiento' )
+    equipment_structure_ids = fields.One2many( related='equipment_id.maintenance_product_list', string='Estructura del equipamiento' )
+    
     
     
     @api.onchange('equipment_id')
