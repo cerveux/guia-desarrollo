@@ -14,6 +14,8 @@
         'views/maintenance_request_data.xml',
         'views/maintenance_request_views.xml',
         'views/templates.xml',
+        'reports/templates.xml',
+        'reports/report.xml',
     ],
     "application": False,
     'sequence': -1000, 
