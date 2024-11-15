@@ -1,0 +1,170 @@
+<odoo>
+    <data>
+
+        <template id="report_maintenance_request_dev">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.internal_layout">
+                        <div class="page">
+                            <div class="oe_structure" />
+                            <h2>
+                                <div t-if="doc.owner_user_id" class="mb-2">
+                                    <strong>Orden de trabajo: <span t-field="doc.code" /></strong>
+                                </div>
+                            </h2>
+
+                            <div class="mt-2 mb-2 border border-dark rounded" id="informations">
+                                <div t-if="doc.owner_user_id" class="col-auto mw-100">
+                                    <strong>Solicitante:</strong>
+                                    <span class="m-0" t-field="doc.owner_user_id" />
+                                </div>
+                                <div t-if="doc.equipment_id" class="col-auto mw-100">
+                                    <strong>Equipamento: </strong>
+                                    <span class="m-0" t-field="doc.equipment_id" />
+                                </div>
+                                <div class="col-auto mw-100">
+                                    <strong>Sector:</strong>
+                                </div>
+                                <div class="col-auto mw-100">
+                                    <strong>Fecha prevista:</strong>
+                                </div>
+                                <div t-if="doc.maintenance_team_id" class="col-auto mw-100">
+                                    <strong>Equipo responsable: </strong>
+                                    <span class="m-0" t-field="doc.maintenance_team_id" />
+                                </div>
+                                <div t-if="doc.user_id" class="col-auto mw-100">
+                                    <strong>Responsable:</strong>
+                                    <span class="m-0" t-field="doc.user_id" />
+                                </div>
+                                <div t-if="doc.maintenance_type" class="col-auto mw-100">
+                                    <strong>Tipo: </strong>
+                                    <span class="m-0" t-field="doc.maintenance_type" />
+                                </div>
+                                <div class="col-auto mw-100 mb-1">
+                                    <strong>Prioridad: </strong>
+                                    <span class="m-0" t-field="doc.maintenance_priority" />
+                                </div>
+                            </div>
+
+                            <div class="mt-2 mb-2 border border-dark rounded" id="instructions">
+                                <div t-if="doc.note" class="col-auto mw-100">
+                                    <strong>Instrucciones: </strong>
+                                    <p class="m-0" t-field="doc.note" />
+                                </div>
+                            </div>
+
+                            <div class="mt-2 mb-2 border border-dark rounded" id="description">
+                                <div t-if="doc.description" class="col-auto mw-100">
+                                    <strong>Descripcion:</strong>
+                                    <p class="m-0" t-field="doc.description" />
+                                </div>
+                            </div>
+
+                            <div class="mt-2 mb-2 border border-dark rounded p-2 pb-5" id="news">
+                                <div class="col-auto mw-100 mb-2">
+                                    <strong>Novedades y tareas fuera de programa:</strong>
+                                    <br/>
+                                    <br/>
+                                </div>
+                            </div>
+
+                            <div class="border border-dark d-inline-block" id="titulo">
+                                <strong>Listado de materiales:</strong>
+                            </div>
+                            <div class="" id="title-materials">
+                                <div class='row w-100'>
+                                    <div class="col-auto ml-3 mw-100 border border-dark bg-secondary">
+                                        <strong>Producto</strong>
+                                    </div>
+                                    <div class="col-auto mw-100 border border-dark bg-secondary">
+                                        <strong>Cantidad</strong>
+                                    </div>
+                                    <div class="col-auto mw-100 border border-dark bg-secondary">
+                                        <strong>Unidad de medida</strong>
+                                    </div>
+                                </div>
+                                <t t-foreach="doc.maintenance_product_list" t-as="lista">
+                                    <div class='row w-100'>
+                                        <div class="col-auto ml-3 mw-100 border border-dark">
+                                            <p class="m-0" t-field="lista.product_id" />
+                                        </div>
+                                        <div class="col-auto mw-100 border border-dark">
+                                            <p class="m-0" t-field="lista.quantity" />
+                                        </div>
+                                        <div class="col-auto mw-100 border border-dark">
+                                            <p class="m-0" t-field="lista.uom_id" />
+                                        </div>
+                                    </div>
+
+                                </t>
+                            </div>
+
+                            <div class="border border-dark d-inline-block mt-2" id="titulo-mo">
+                                <strong>Mano de obra:</strong>
+                            </div>
+                            <div class="" id="mano-obra">
+                                <div class='row w-100'>
+                                    <div class="col-auto ml-3 mw-100 border border-dark">
+                                        <strong>Fecha</strong>
+                                    </div>
+                                    <div class="col-auto mw-100 border border-dark">
+                                        <strong>Usuario informante</strong>
+                                    </div>
+                                    <div class="col-auto mw-100 border border-dark">
+                                        <strong>Proyecto</strong>
+                                    </div>
+                                    <div class="col-auto mw-100 border border-dark">
+                                        <strong>Tarea</strong>
+                                    </div>
+                                    <div class="col-auto mw-100 border border-dark">
+                                        <strong>Descripcion</strong>
+                                    </div>
+                                    <div class="col-auto mw-100 border border-dark">
+                                        <strong>Horas</strong>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container" id="registro">
+                                <div class='row w-100 border-bottom border-top mt-3'>
+                                    <div class="col-auto ml-3 mw-100">
+                                        <p>Fecha de realizacion 1: __/__/__</p>
+                                    </div>
+                                    <div class="col-auto mw-100">
+                                        <p>Hora Inicio: __:__Hs</p>
+                                    </div>
+                                    <div class="col-auto mw-100">
+                                        <p>Hora Final: __:__Hs</p>
+                                    </div>
+                                </div>
+                                <div class='row w-100 border-bottom border-top'>
+                                    <div class="col-auto ml-3 mw-100">
+                                        <p>Fecha de realizacion 2: __/__/__</p>
+                                    </div>
+                                    <div class="col-auto mw-100">
+                                        <p>Hora Inicio: __:__Hs</p>
+                                    </div>
+                                    <div class="col-auto mw-100">
+                                        <p>Hora Final: __:__Hs</p>
+                                    </div>
+                                </div>
+                                <div class='row w-100 mt-5'>
+                                    <div class="col-auto ml-3 mw-100 text-center">
+                                        <p>__________________</p>
+                                        <p style="margin: 2px 0;">Firma</p>
+                                        <p style="margin: 2px 0;">Jefe de Mantenimiento</p>
+                                    </div>
+                                    <div class="col-auto mw-100 text-center">
+                                        <p>__________________</p>
+                                        <p style="margin: 2px 0;">Firma</p>
+                                        <p style="margin: 2px 0;">Jefe Seccion de Produccion</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

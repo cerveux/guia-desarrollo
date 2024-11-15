@@ -62,7 +62,6 @@
         <xpath expr="//notebook/page[last()]" position="after">
             <page string="Lista de Productos">
                 <field name="maintenance_product_list" widget="section_and_note_one2many">
-
                       <tree string="">
                         <field name="product_id" />
                         <field name="quantity" />
