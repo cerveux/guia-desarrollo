@@ -7,7 +7,7 @@
     'website': "http://172.16.2.145:4500/home",
     'category': 'Maintenance',
     'version': '0.1',
-    'depends': ['maintenance', 'hr_timesheet', 'product', 'maintenance_plan', 'maintenance_project', 'maintenance_request_sequence'],
+    'depends': ['maintenance', 'hr_timesheet', 'product', 'maintenance_plan', 'maintenance_project', 'maintenance_request_sequence', 'resource'],
     'data': [
         'security/ir.model.access.csv',
         'views/account_analytic_line.xml',
