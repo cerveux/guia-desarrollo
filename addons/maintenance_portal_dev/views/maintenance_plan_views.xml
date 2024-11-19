@@ -6,6 +6,10 @@
             <field name="model">maintenance.plan</field>
             <field name="inherit_id" ref="maintenance_plan.maintenance_plan_view_form"></field>
             <field name="arch" type="xml">
+                <!-- ejercicio 3-e -->
+                <xpath expr="//field[@name='maintenance_kind_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+                </xpath>
                 <xpath expr="//form/sheet/notebook/page[2]" position="after">
                     <page string="Productos para mantenimiento">
                         <field name="product_structure_ids" string='Productos para mantenimiento' widget="section_and_note_one2many">
