@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_maintenance_plan_form_inherit" model="ir.ui.view">
+            <field name="name">maintenance.plan.form.inherit</field>
+            <field name="model">maintenance.plan</field>
+            <field name="inherit_id" ref="maintenance_plan.maintenance_plan_view_form"></field>
+            <field name="arch" type="xml">
+                <xpath expr="//form/sheet/notebook/page[2]" position="after">
+                    <page string="Productos para mantenimiento">
+                        <field name="product_structure_ids" string='Productos para mantenimiento' widget="section_and_note_one2many">
+                            <tree string="">
+                                <field name="product_id" />
+                                <field name="quantity" />
+                                <field name="uom_id" />                        
+                            </tree>
+                            <form string="">
+                                <sheet>
+                                    <group>
+                                        <field name="product_id" />
+                                        <field name="quantity" />
+                                        <field name="uom_id" />                          
+                                    </group>
+                                </sheet>
+                            </form>
+                        </field>
+                    </page>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>
+
+
+
+
+
+
+
+
+

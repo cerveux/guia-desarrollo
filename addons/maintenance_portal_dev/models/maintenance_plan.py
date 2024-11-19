@@ -9,6 +9,8 @@ from odoo.exceptions import ValidationError
 
 class MaintenancePlan(models.Model):
     _inherit = "maintenance.plan"
+    
+    product_structure_ids = fields.One2many( 'maintenance.product.list', 'plan_id', string='Productos para mantenimiento' )
 
     @api.model
     def create(self, vals):
