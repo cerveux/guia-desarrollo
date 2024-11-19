@@ -15,6 +15,7 @@
         'views/maintenance_request_views.xml',
         'views/templates.xml',
         'views/mantenance_equipment.views.xml',
+        'views/maintenance_plan_views.xml',
         'reports/templates.xml',
         'reports/report.xml',
         
