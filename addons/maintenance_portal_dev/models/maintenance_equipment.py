@@ -24,7 +24,8 @@ class MaintenanceRequest(models.Model):
 
         # Update the `schedule_date` to use the UTC format
         values["schedule_date"] = utc_datetime.strftime("%Y-%m-%d %H:%M:%S")
-
+        values["maintenance_product_list"] = maintenance_plan.product_structure_ids
+        
         return values
     
     
