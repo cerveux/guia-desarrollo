@@ -1,5 +1,16 @@
 <odoo>
     <data>
+
+        <template id="portal_my_home" inherit_id='portal.portal_my_home' name="My Portal">
+          <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-if="maintenance_count" t-call="portal.portal_docs_entry">
+              <t t-set="url" t-value="'my/maintenance'"/>
+              <t t-set="title" t-value="'Maintenance'"/>
+              <t t-set="count" t-value="maintenance_count" />
+            </t>
+          </xpath>
+
+    </template>
 <!--
         <template id="listing">
           <ul>
