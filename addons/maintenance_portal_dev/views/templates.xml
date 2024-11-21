@@ -8,6 +8,19 @@
               <t t-set="title" t-value="'Maintenance'"/>
               <t t-set="count" t-value="maintenance_count" />
             </t>
+            <form method="POST" t-attf-action="/nuevo/mantenimiento">
+                <input
+                    type="hidden"
+                    name="csrf_token"
+                    t-att-value="request.csrf_token()"
+                />
+                <button
+                    name="create_new_maintenance_request"
+                    type="action"
+                    class="btn btn-primary"
+                    style="float: right; margin-right: 0px; margin-top:5px; margin-bottom:5px; "
+                >Request Maintenance</button>
+            </form>
           </xpath>
 
     </template>
