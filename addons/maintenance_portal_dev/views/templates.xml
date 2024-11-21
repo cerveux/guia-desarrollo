@@ -24,25 +24,73 @@
           </xpath>
 
     </template>
-<!--
-        <template id="listing">
-          <ul>
-            <li t-foreach="objects" t-as="object">
-              <a t-attf-href="#{ root }/objects/#{ object.id }">
-                <t t-esc="object.display_name"/>
-              </a>
-            </li>
-          </ul>
-        </template>
-        <template id="object">
-          <h1><t t-esc="object.display_name"/></h1>
-          <dl>
-            <t t-foreach="object._fields" t-as="field">
-              <dt><t t-esc="field"/></dt>
-              <dd><t t-esc="object[field]"/></dd>
-            </t>
-          </dl>
-        </template>
--->
+
+    <template id="portal_create_request" name="Create Maintenace Request">
+        <t t-call="portal.portal_layout">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="text-center">Pedido de mantenimiento</h1>
+                    </div>
+                </div>
+            </div>
+            <form
+                action="/submitted/request"
+                method="POST"
+                class="form-horizontal mt32"
+                enctype="multipart/form-data"
+            >
+                <input
+                    type="hidden"
+                    name="csrf_token"
+                    t-att-value="request.csrf_token()"
+                />
+                <div class="form-group">
+                  <label class="col-md-3 col-sm-4 control-label" for="name">Nombre de la petición</label>
+                  <div class="col-md-7 col-sm-8">
+                    <input type="text" class="form-control" name="name" required="True"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 col-sm-4 control-label" for="equipment">Equipamiento</label>
+                    <div class="col-md-7 col-sm-8">
+                        <select class="form-control" id="equipment" name="equipment">
+                          <option disabled="True" selected="True">Si desea elija un equipo</option>
+                          <t t-foreach="equipment" t-as="equipo">
+                              <option t-attf-value="#{equipo.id}">
+                                  <t t-esc="equipo.name" />
+                              </option>
+                          </t>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 col-sm-4 control-label" for="priority">Prioridad</label>
+                    <div class="col-md-7 col-sm-8">
+                        <select class="form-control" id="priority" name="priority" required="True">
+                          <option value="" selected="True">Debe elegir un nivel de prioridad</option>
+                          <t t-foreach="priorities" t-as="priority">
+                              <option t-attf-value="#{priority[0]}">
+                                  <t t-esc="priority[1]" />
+                              </option>
+                          </t>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-3 col-dm-4 control-label" for="description">Descripción</label>
+                  <div class="col-md-7 col-sm-8">
+                    <textarea class="form-control" name="description" style="min-height: 120px" required="True" />
+                  </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-3 col-sm-offset-4 col-sm-8 col-md-7">
+                        <button class="btn btn-primary btn-lg">Enviar petición</button>
+                    </div>
+                </div>
+            </form>
+        </t>
+    </template>
+
     </data>
 </odoo>
