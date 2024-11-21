@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <!-- <record id="maintenance_kind_view_tree" model="ir.ui.view">
+    <record id="maintenance_kind_view_tree" model="ir.ui.view">
         <field name="name">maintenance.kind.tree</field>
         <field name="model">maintenance.kind</field>
         <field name="arch" type="xml">
@@ -22,5 +22,5 @@
         parent="maintenance.menu_maintenance_configuration"
         action="maintenance_kind_action"
         sequence="4"
-    /> -->
+    />
 </odoo>

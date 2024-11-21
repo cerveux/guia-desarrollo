@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <delete model="ir.ui.menu" id="maintenance_plan.menu_maintenance_kind_configuration"></delete>
+</odoo>
