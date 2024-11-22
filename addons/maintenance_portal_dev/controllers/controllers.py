@@ -10,7 +10,8 @@ class MaintenancePortalDev(CustomerPortal):
     
     def _prepare_portal_layout_values(self):
         values = super()._prepare_portal_layout_values()
-        maintenance_count = request.env["maintenance.request"].search_count([])
+        partner = request.env.user.partner_id
+        maintenance_count = request.env["maintenance.request"].search_count([("partner_id", "=", partner.id)])
         values["maintenance_count"] = maintenance_count
         return values
         
@@ -38,3 +39,21 @@ class MaintenancePortalDev(CustomerPortal):
         maintenance_request.message_subscribe(partner_ids=request.env.user.partner_id.ids)
 
         return werkzeug.utils.redirect("/my/requests")
+    
+    @route(["/my/requests"], type="http", auth="user", website=True, csrf=True )
+    def portal_my_tickets( self, **kw ):
+        values = self._prepare_portal_layout_values()
+        partner = request.env.user.partner_id
+        MaintenanceRequests = request.env['maintenance.request']
+        
+        requests = MaintenanceRequests.search([("partner_id", "=", partner.id)])
+        
+        # HelpdesTicket = request.env["helpdesk.ticket"]
+
+        values.update(
+            {
+                "maintenance_requests": requests,
+            }
+        )
+        return request.render("maintenance_portal_dev.portal_my_requests", values)
+        # return request.render("maintenance_portal_dev.portal_my_requests", values)

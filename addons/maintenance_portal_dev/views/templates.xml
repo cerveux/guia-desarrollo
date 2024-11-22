@@ -4,8 +4,8 @@
         <template id="portal_my_home" inherit_id='portal.portal_my_home' name="My Portal">
           <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
             <t t-if="maintenance_count" t-call="portal.portal_docs_entry">
-              <t t-set="url" t-value="'my/maintenance'"/>
-              <t t-set="title" t-value="'Maintenance'"/>
+              <t t-set="title">Maintenance</t>
+              <t t-set="url" t-value="'/my/requests'"/>
               <t t-set="count" t-value="maintenance_count" />
             </t>
             <form method="POST" t-attf-action="/nuevo/mantenimiento">
@@ -22,7 +22,6 @@
                 >Request Maintenance</button>
             </form>
           </xpath>
-
     </template>
 
     <template id="portal_create_request" name="Create Maintenace Request">
@@ -89,6 +88,47 @@
                     </div>
                 </div>
             </form>
+        </t>
+    </template>
+
+    <template id="portal_my_requests" name="My tickets">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True" />
+            
+
+            <t t-if="not maintenance_requests">
+                <p>No hay peticiones de mantenimiento en para tu cuenta.</p>
+            </t>
+
+            <div t-if="maintenance_requests" class="panel panel-default">
+                <div class="table-responsive">
+                    <table class="table table-hover o_portal_my_doc_table">
+                        <thead>
+                            <tr class="active">
+                                <th>Name</th>
+                                <th>Equipamiento</th>
+                                <th>Prioridad</th>
+                            </tr>
+                        </thead>
+                        <t t-foreach="maintenance_requests" t-as="maintenance">
+                            <tr>
+                            <td>
+                                    <a t-attf-href="/my/request/#{maintenance.id}">
+                                        <t t-esc="maintenance.name" />
+                                    </a>
+                                </td>
+                                <td>
+                                    <t t-esc="maintenance.equipment_id" />
+                                </td>
+                                <td>
+                                    <t t-esc="maintenance.maintenance_priority" />
+                                </td>
+                                
+                            </tr>
+                        </t>
+                    </table>
+                </div>
+            </div>
         </t>
     </template>
 
