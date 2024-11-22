@@ -94,7 +94,22 @@
     <template id="portal_my_requests" name="My tickets">
         <t t-call="portal.portal_layout">
             <t t-set="breadcrumbs_searchbar" t-value="True" />
-            
+            <form method="POST" t-attf-action="/nuevo/mantenimiento">
+                <h3>Peticiones
+                    <t t-call="portal.portal_searchbar" />
+                    <button
+                        name="create_new_ticket"
+                        type="action"
+                        class="btn btn-primary"
+                        style="float: right; margin-right: 5px;"
+                    >Nueva Petición</button>
+                </h3>
+                <input
+                    type="hidden"
+                    name="csrf_token"
+                    t-att-value="request.csrf_token()"
+                />
+            </form>
 
             <t t-if="not maintenance_requests">
                 <p>No hay peticiones de mantenimiento en para tu cuenta.</p>
