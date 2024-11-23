@@ -31,7 +31,7 @@ class MaintenancePortalDev(CustomerPortal):
             # "company_id": http.request.env.user.company_id.id,
             "name": kw.get("name"),
             "description": kw.get("description"),
-            "equipment_id": kw.get("equipment"),
+            "equipment_id": int(kw.get("equipment")) if kw.get("equipment") else None,
             "maintenance_priority": kw.get("priority"),
             "partner_id": request.env.user.partner_id.id
         }
