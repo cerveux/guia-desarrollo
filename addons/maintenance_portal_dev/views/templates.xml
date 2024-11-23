@@ -120,24 +120,49 @@
                     <table class="table table-hover o_portal_my_doc_table">
                         <thead>
                             <tr class="active">
-                                <th>Name</th>
-                                <th>Equipamiento</th>
+                                <th>Por</th>
+                                <th>Numero</th>
                                 <th>Prioridad</th>
+                                <th>Nombre</th>
+                                <th>Equipamiento</th>
+                                <th>Etapa</th>
+                                <th>Fecha de creación</th>
+                                <th>Fecha prevista de realización</th>
+                                <th>Fecha de cierre</th>
                             </tr>
                         </thead>
                         <t t-foreach="maintenance_requests" t-as="maintenance">
                             <tr>
-                            <td>
-                                    <a t-attf-href="/my/request/#{maintenance.id}">
-                                        <t t-esc="maintenance.name" />
-                                    </a>
+                                <td>
+                                    <t t-esc="maintenance.partner_id.name" />
                                 </td>
                                 <td>
-                                    <t t-esc="maintenance.equipment_id" />
+                                    <t t-esc="maintenance.code" />
                                 </td>
                                 <td>
                                     <t t-esc="maintenance.maintenance_priority" />
                                 </td>
+                                <td>
+                                <a t-attf-href="/my/request/#{maintenance.id}">
+                                    <t t-esc="maintenance.name" />
+                                </a>
+                                </td>
+                                <td>
+                                    <t t-esc="maintenance.equipment_id.name" />
+                                </td>
+                                <td>
+                                    <t t-esc="maintenance.stage_id.name" />
+                                </td>
+                                <td>
+                                    <t t-esc="maintenance.create_date" />
+                                </td>
+                                <td>
+                                    <t t-esc="maintenance.schedule_date" />
+                                </td>
+                                <td>
+                                    <t t-esc="maintenance.close_date" />
+                                </td>
+                                
                                 
                             </tr>
                         </t>
