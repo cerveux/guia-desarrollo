@@ -1,0 +1,28 @@
+<odoo>
+
+    <data>
+
+        <record id="ticket_view_form_inherit" model="ir.ui.view">
+            <field name="name">helpdesk.mgmt.view.form.inherit</field>
+            <field name="model">helpdesk.ticket</field>
+            <field name="inherit_id" ref="helpdesk_mgmt.ticket_view_form"></field>
+            <field name="arch" type="xml">
+                <!-- ejercicio 5-a -->
+                <xpath expr="//field[@name='priority']" position="replace"/>
+            </field>
+        </record>
+
+        <record id="view_helpdesk_ticket_kanban_inherit" model="ir.ui.view">
+            <field name="name">helpdesk.mgmt.view.kanban.inherit</field>
+            <field name="model">helpdesk.ticket</field>
+            <field name="inherit_id" ref="helpdesk_mgmt.view_helpdesk_ticket_kanban"/>
+            <field name="arch" type="xml">
+                <!-- ejercicio 5-a -->
+                <xpath expr="//div[@class='oe_kanban_bottom_left']//field[@name='priority']" position="replace">
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+
+</odoo>
