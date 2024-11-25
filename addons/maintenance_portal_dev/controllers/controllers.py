@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # from odoo import http
 from odoo.http import request, route
+from odoo.exceptions import AccessError
 from odoo.addons.portal.controllers.portal import CustomerPortal, pager as portal_pager
 
 import werkzeug
@@ -14,7 +15,31 @@ class MaintenancePortalDev(CustomerPortal):
         maintenance_count = request.env["maintenance.request"].search_count([("partner_id", "=", partner.id)])
         values["maintenance_count"] = maintenance_count
         return values
-        
+
+    def _maintenance_request_check_access(self, request_id):
+        maintenance_request = request.env["maintenance.request"].browse([request_id])
+        request_sudo = maintenance_request.sudo()
+        try:
+            maintenance_request.check_access_rights("read")
+            maintenance_request.check_access_rule("read")
+        except AccessError:
+            raise
+        return request_sudo
+
+    def _maintenance_get_page_view_values(self, maintenancenance, **kwargs):
+        stages = request.env["maintenance.stage"].search([])
+        values = {
+                "page_name": "peticion",
+                "maintenance": maintenancenance,
+                "stages": stages
+            }
+        if kwargs.get("error"):
+            values["error"] = kwargs["error"]
+        if kwargs.get("warning"):
+            values["warning"] = kwargs["warning"]
+        if kwargs.get("success"):
+            values["success"] = kwargs["success"]
+        return values
 
     @route("/nuevo/mantenimiento", type="http", auth="user", website=True)
     def create_maintenance_request(self, **kw):
@@ -96,3 +121,29 @@ class MaintenancePortalDev(CustomerPortal):
             }
         )
         return request.render("maintenance_portal_dev.portal_my_requests", values)
+
+    @route(["/request/update_stage"], type="http", auth="user", website=True)
+    def update_stage(self, maintenance_id=None, stage_id=None, **kw):
+        if not maintenance_id or not stage_id:
+            return request.redirect("/my")
+        
+        try:
+            maintenance = request.env["maintenance.request"].sudo().browse(int(maintenance_id))
+            stage = request.env["maintenance.stage"].sudo().browse(int(stage_id))
+            
+            if maintenance and stage:
+                maintenance.write({"stage_id": stage.id})
+        except Exception as e:
+            return request.redirect("/my?error=stage_update_failed")
+    
+        return request.redirect(f"/my/request/{maintenance_id}")
+
+    @route(["/my/request/<int:request_id>"], type="http", website=True)
+    def portal_my_ticket(self, request_id=None, **kw):
+        try:
+            request_sudo = self._maintenance_request_check_access(request_id)
+        except AccessError:
+            return request.redirect("/my")
+        values = self._maintenance_get_page_view_values(request_sudo, **kw)
+        return request.render("maintenance_portal_dev.portal_maintenance_request_page", values)
+
