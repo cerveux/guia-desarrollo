@@ -99,9 +99,6 @@
                 <t t-set="title">Peticiones</t>
             </t>
 
-
-
-
             <form method="POST" t-attf-action="/nuevo/mantenimiento">
                 <h3>Peticiones
                     <button
@@ -176,6 +173,101 @@
                     </table>
                 </div>
             </div>
+        </t>
+    </template>
+    <template id="portal_maintenance_request_page" name="Maintenance Portal Template">
+        <t t-call="portal.portal_layout">
+            <div class="container bg-light p-5 rounded mt-5">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>
+                                    <t t-call='portal.record_pager' />
+                                    <span t-field="maintenance.name" />
+                                </h4>
+                            </div>
+                            <t t-foreach="stages" t-as="stage">
+                                <form
+                                    method="POST"
+                                    t-attf-action="/request/update_stage"
+                                    style="display:inline;"
+                                >
+                                    <input
+                                        type="hidden"
+                                        name="maintenance_id"
+                                        t-att-value="maintenance.id"
+                                    />
+                                    <input
+                                        type="hidden"
+                                        name="stage_id"
+                                        t-att-value="stage.id"
+                                    />
+                                    <input
+                                        type="hidden"
+                                        name="csrf_token"
+                                        t-att-value="request.csrf_token()"
+                                    />
+                                    <button
+                                        type="submit"
+                                        class="btn btn-primary"
+                                        style="margin-right: 15px; margin-top: 3px;"
+                                        t-if="maintenance.stage_id.id != stage.id"
+                                    >
+                                        <span t-esc="stage.name" />
+                                    </button>
+                                </form>
+                            </t>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="mb8">
+
+                            <div class="row mt-3">
+                    <div class="col-6 ps-5">
+                        <strong>Number:</strong>
+                        <span t-field="maintenance.code" />
+                        <br />
+                        <strong>Equipamiento:</strong>
+                        <span t-field="maintenance.equipment_id.name" />
+                        <br />
+                        <strong>Fecha de creación:</strong>
+                        <span t-field="maintenance.create_date" />
+                        <br />
+                        <strong>Tipo de mantenimiento:</strong>
+                        <span t-field="maintenance.maintenance_type" />
+                        <br />
+                        <strong>Duración:</strong>
+                        <span t-field="maintenance.duration" />
+                        <br />
+                    </div>
+                    <div class="col-6">
+                        <strong>Prioridad:</strong>
+                        <span t-field="maintenance.maintenance_priority" />
+                        <br />
+                        <strong>Etapa:</strong>
+                        <span t-field="maintenance.stage_id.name" />
+                        <br />
+                        <strong>Fecha prevista de realización:</strong>
+                        <span t-field="maintenance.schedule_date" />
+                        <br />
+                        <strong>Equipo de mantenimiento:</strong>
+                        <span t-field="maintenance.maintenance_team_id.name" />
+                        <br />
+                    </div>
+                </div>
+
+                            
+                            <br />
+                            <br />
+                            <h4 class="page-header">Description</h4>
+                            <t t-raw="maintenance.description" />
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="oe_structure mb32" />
         </t>
     </template>
 
