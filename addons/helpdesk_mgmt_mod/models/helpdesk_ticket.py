@@ -9,3 +9,4 @@ class HelpdeskTicket(models.Model):
     _inherit = "helpdesk.ticket"
     
     product_structure_ids = fields.One2many('maintenance.product.list', 'helpdesk_ticket_id', string='Listado de productos')
+    maintenance_request_id = fields.Many2one('maintenance.request', string='Petición de mantenimiento')
