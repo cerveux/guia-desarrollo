@@ -94,9 +94,16 @@
     <template id="portal_my_requests" name="My tickets">
         <t t-call="portal.portal_layout">
             <t t-set="breadcrumbs_searchbar" t-value="True" />
+
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Peticiones</t>
+            </t>
+
+
+
+
             <form method="POST" t-attf-action="/nuevo/mantenimiento">
                 <h3>Peticiones
-                    <t t-call="portal.portal_searchbar" />
                     <button
                         name="create_new_ticket"
                         type="action"
@@ -115,7 +122,7 @@
                 <p>No hay peticiones de mantenimiento en para tu cuenta.</p>
             </t>
 
-            <div t-if="maintenance_requests" class="panel panel-default">
+            <div t-if="maintenance_requests" class="panel panel-default" t-call="portal.portal_table">
                 <div class="table-responsive">
                     <table class="table table-hover o_portal_my_doc_table">
                         <thead>
