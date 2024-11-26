@@ -12,6 +12,27 @@
                 <xpath expr="//field[@name='channel_id']" position="after">
                     <field name="maintenance_request_id" context="{'helpdesk_mgmt': True}" />
                 </xpath>
+
+                <xpath expr="//notebook/page[last()]" position="after">
+                    <page string="Lista de Productos">
+                        <field name="product_structure_ids" widget="section_and_note_one2many">
+                            <tree string="">
+                                <field name="product_id" />
+                                <field name="quantity" />
+                                <field name="uom_id" />                        
+                            </tree>
+                            <form string="">
+                                <sheet>
+                                    <group>
+                                    <field name="product_id" />
+                                    <field name="quantity" />
+                                    <field name="uom_id" />                          
+                                    </group>
+                                </sheet>
+                            </form>
+                        </field>
+                    </page>
+                </xpath>
             </field>
         </record>
 
