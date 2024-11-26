@@ -9,10 +9,11 @@ class CustomHelpdeskTicketController(HelpdeskTicketController):
     
     @http.route("/new/ticket", type="http", auth="user", website=True)
     def create_new_ticket(self, **kw):
-        type = http.request.env["helpdesk.ticket.type"].search([])
+        types = http.request.env["helpdesk.ticket.type"].search([])
+        teams = http.request.env["helpdesk.ticket.team"].search([])
         email = http.request.env.user.email
         name = http.request.env.user.name
         return http.request.render(
             "helpdesk_mgmt.portal_create_ticket",
-            {"types": type, "email": email, "name": name},
+            {"types": types, "email": email, "name": name, "teams": teams},
         )
