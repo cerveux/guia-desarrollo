@@ -1,21 +1,18 @@
-# -*- coding: utf-8 -*-
-# from odoo import http
+from odoo import http
+from odoo.http import request
+import logging
+from odoo.addons.helpdesk_mgmt.controllers.main import HelpdeskTicketController
 
+_logger = logging.getLogger(__name__)
 
-# class HelpdeskMgmtMod(http.Controller):
-#     @http.route('/helpdesk_mgmt_mod/helpdesk_mgmt_mod', auth='public')
-#     def index(self, **kw):
-#         return "Hello, world"
-
-#     @http.route('/helpdesk_mgmt_mod/helpdesk_mgmt_mod/objects', auth='public')
-#     def list(self, **kw):
-#         return http.request.render('helpdesk_mgmt_mod.listing', {
-#             'root': '/helpdesk_mgmt_mod/helpdesk_mgmt_mod',
-#             'objects': http.request.env['helpdesk_mgmt_mod.helpdesk_mgmt_mod'].search([]),
-#         })
-
-#     @http.route('/helpdesk_mgmt_mod/helpdesk_mgmt_mod/objects/<model("helpdesk_mgmt_mod.helpdesk_mgmt_mod"):obj>', auth='public')
-#     def object(self, obj, **kw):
-#         return http.request.render('helpdesk_mgmt_mod.object', {
-#             'object': obj
-#         })
+class CustomHelpdeskTicketController(HelpdeskTicketController):
+    
+    @http.route("/new/ticket", type="http", auth="user", website=True)
+    def create_new_ticket(self, **kw):
+        type = http.request.env["helpdesk.ticket.type"].search([])
+        email = http.request.env.user.email
+        name = http.request.env.user.name
+        return http.request.render(
+            "helpdesk_mgmt.portal_create_ticket",
+            {"types": type, "email": email, "name": name},
+        )

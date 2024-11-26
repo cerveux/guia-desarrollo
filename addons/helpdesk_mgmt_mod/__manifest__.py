@@ -9,7 +9,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'helpdesk_mgmt', 'maintenance_portal_dev'],
+    'depends': ['base', 'helpdesk_mgmt', 'maintenance_portal_dev', 'helpdesk_type'],
 
     # always loaded
     'data': [
