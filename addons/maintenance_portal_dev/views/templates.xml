@@ -2,27 +2,27 @@
     <data>
 
         <template id="portal_my_home" inherit_id='portal.portal_my_home' name="My Portal">
-          <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
-            <t t-if="maintenance_count" t-call="portal.portal_docs_entry">
-              <t t-set="title">Maintenance</t>
-              <t t-set="url" t-value="'/my/requests'"/>
-              <t t-set="count" t-value="maintenance_count" />
-            </t>
-            <form method="POST" t-attf-action="/nuevo/mantenimiento">
-                <input
-                    type="hidden"
-                    name="csrf_token"
-                    t-att-value="request.csrf_token()"
-                />
-                <button
-                    name="create_new_maintenance_request"
-                    type="action"
-                    class="btn btn-primary"
-                    style="float: right; margin-right: 0px; margin-top:5px; margin-bottom:5px; "
-                >Request Maintenance</button>
-            </form>
-          </xpath>
-    </template>
+            <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+                <t t-if="maintenance_count" t-call="portal.portal_docs_entry">
+                    <t t-set="title">Maintenance</t>
+                    <t t-set="url" t-value="'/my/requests'"/>
+                    <t t-set="count" t-value="maintenance_count" />
+                </t>
+                <form method="POST" t-attf-action="/nuevo/mantenimiento">
+                    <input
+                        type="hidden"
+                        name="csrf_token"
+                        t-att-value="request.csrf_token()"
+                    />
+                    <button
+                        name="create_new_maintenance_request"
+                        type="action"
+                        class="btn btn-primary"
+                        style="float: right; margin-right: 0px; margin-top:5px; margin-bottom:5px; "
+                    >Request Maintenance</button>
+                </form>
+            </xpath>
+        </template>
 
     <template id="portal_create_request" name="Create Maintenace Request">
         <t t-call="portal.portal_layout">

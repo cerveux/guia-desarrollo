@@ -51,7 +51,7 @@ class MaintenancePortalDev(CustomerPortal):
         )
         
     @route("/submitted/request", type="http", auth="user", website=True, csrf=True)
-    def submit_ticket(self, **kw):
+    def submit_request(self, **kw):
         vals = {
             # "company_id": http.request.env.user.company_id.id,
             "name": kw.get("name"),
@@ -66,7 +66,7 @@ class MaintenancePortalDev(CustomerPortal):
         return werkzeug.utils.redirect("/my/requests")
     
     @route(["/my/requests"], type="http", auth="user", website=True, csrf=True )
-    def portal_my_tickets( self, sortby=None, filterby=None, **kw ):
+    def portal_my_requests( self, sortby=None, filterby=None, **kw ):
         values = self._prepare_portal_layout_values()
         partner = request.env.user.partner_id
         MaintenanceRequests = request.env['maintenance.request']
@@ -139,7 +139,7 @@ class MaintenancePortalDev(CustomerPortal):
         return request.redirect(f"/my/request/{maintenance_id}")
 
     @route(["/my/request/<int:request_id>"], type="http", website=True)
-    def portal_my_ticket(self, request_id=None, **kw):
+    def portal_my_request(self, request_id=None, **kw):
         try:
             request_sudo = self._maintenance_request_check_access(request_id)
         except AccessError:

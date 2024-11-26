@@ -1,24 +1,44 @@
 <odoo>
     <data>
-<!--
-        <template id="listing">
-          <ul>
-            <li t-foreach="objects" t-as="object">
-              <a t-attf-href="#{ root }/objects/#{ object.id }">
-                <t t-esc="object.display_name"/>
-              </a>
-            </li>
-          </ul>
+        <template id="portal_create_ticket_inherit" inherit_id="helpdesk_mgmt.portal_create_ticket">
+            <xpath expr="//label[@for='category']" position="replace">
+                <label class="col-md-3 col-sm-4 control-label" for="type">Type</label>
+            </xpath>
+            <xpath expr="//select[@id='category']" position="replace">
+                <select
+                    class="form-control"
+                    id="type"
+                    name="type"
+                    required="True"
+                >
+                    <t t-foreach="types" t-as="type">
+                        <option t-attf-value="#{type.id}">
+                            <t t-esc="type.name" />
+                        </option>
+                    </t>
+                        </select>
+                </xpath>
         </template>
-        <template id="object">
-          <h1><t t-esc="object.display_name"/></h1>
-          <dl>
-            <t t-foreach="object._fields" t-as="field">
-              <dt><t t-esc="field"/></dt>
-              <dd><t t-esc="object[field]"/></dd>
-            </t>
-          </dl>
+
+        <template id="portal_my_tickets_inherit" inherit_id="helpdesk_mgmt.portal_my_tickets">
+            <xpath expr="//th[4]" position="replace">
+                <th>Type</th>
+            </xpath>
+            <xpath expr="//td[4]" position="replace">
+                <td>
+                    <t t-esc="ticket.type_id.name" />
+                </td>
+                
+            </xpath>
         </template>
--->
+
+        <template id="portal_helpdesk_ticket_page_inherit" inherit_id="helpdesk_mgmt.portal_helpdesk_ticket_page">
+        <xpath expr="//div[@class='pull-left']//b[1]" position="replace">
+            <b>Type:</b>
+        </xpath>
+        <xpath expr="//div[@class='pull-left']//t[1]" position="replace">
+            <t t-esc="ticket.type_id.name" />
+        </xpath>
+        </template>
     </data>
 </odoo>
