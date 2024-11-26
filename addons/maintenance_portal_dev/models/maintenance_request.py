@@ -46,3 +46,11 @@ class MaintenanceRequest(models.Model):
             )
             vals["code"] = sequence.next_by_id()
         return super().create(vals)
+    
+    def name_get(self):
+        result = []
+        if self._context.get('helpdesk_mgmt'):
+            for rec in self:
+                result.append((rec.id, f'{rec.code}-{rec.name}'))
+            return result
+        return super().name_get()
