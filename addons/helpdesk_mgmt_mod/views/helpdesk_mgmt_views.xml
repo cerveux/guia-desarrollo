@@ -9,6 +9,9 @@
             <field name="arch" type="xml">
                 <!-- ejercicio 5-a -->
                 <xpath expr="//field[@name='priority']" position="replace"/>
+                <xpath expr="//field[@name='channel_id']" position="after">
+                    <field name="maintenance_request_id" context="{'helpdesk_mgmt': True}" />
+                </xpath>
             </field>
         </record>
 
