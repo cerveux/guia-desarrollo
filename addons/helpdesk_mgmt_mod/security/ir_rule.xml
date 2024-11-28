@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ejercicio 7 -->
+    <record id="helpdesk_ticket_type_portal_rule" model="ir.rule">
+        <field name="name">Helpdesk Ticket Type Portal Rule</field>
+        <field name="model_id" ref="helpdesk_type.model_helpdesk_ticket_type"/>
+        <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+        <field name="domain_force">[('access', '=', True)]</field>
+    </record>
+
+    <record id="helpdesk_ticket_type_user_rule" model="ir.rule">
+        <field name="name">Helpdesk Ticket Type Portal Rule</field>
+        <field name="model_id" ref="helpdesk_type.model_helpdesk_ticket_type"/>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+        <field name="domain_force">[('access', '=', True)]</field>
+    </record>
+
+</odoo>
