@@ -7,7 +7,7 @@
             <field name="arch" type="xml">
                 <!-- ejercicio 6-a -->
                 <xpath expr="//field[@name='picking_type_id']" position="after">
-                    <field name="help_desk_ticket_id" />
+                    <field name="helpdesk_ticket_id" />
                 </xpath>
 
             </field>
