@@ -31,7 +31,10 @@
                     required="True"
                 >
                     <t t-foreach="types" t-as="type">
-                        <option t-attf-value="#{type.id}"  t-if='type.name != "Peticion de mantenimiento"'>
+                        <!-- ejercicio 5-j -->
+                        <!-- <option t-attf-value="#{type.id}"  t-if='type.name != "Peticion de mantenimiento"'> -->
+                        <!-- ejercicio 7 -->
+                        <option t-attf-value="#{type.id}">
                             <t t-esc="type.name" />
                         </option>
                     </t>

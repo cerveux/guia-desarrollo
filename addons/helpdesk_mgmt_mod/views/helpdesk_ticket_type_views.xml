@@ -1,0 +1,19 @@
+<odoo>
+
+    <data>
+
+        <record id="helpdesk_ticket_type_form_inherit" model="ir.ui.view">
+            <field name="name">helpdesk.type.view.form.inherit</field>
+            <field name="model">helpdesk.ticket.type</field>
+            <field name="inherit_id" ref="helpdesk_type.helpdesk_ticket_type_form"></field>
+            <field name="arch" type="xml">
+                <!-- ejercicio 7 -->
+                <xpath expr="//field[@name='team_ids']" position="after">
+                    <field name="access" />
+                </xpath>
+                
+            </field>
+        </record>
+
+    </data>
+</odoo>
